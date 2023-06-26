@@ -8,7 +8,7 @@ class App
 {
 
     /**
-     * Запускает выполнение функции
+     * Запускает выполнение функций
      * @return void
      */
     public static function start() {
@@ -16,6 +16,10 @@ class App
         self::db();
     }
 
+    /**
+     * @return void
+     * Подключение библиотек к проекту
+     */
     public static function libs() {
         $config = require_once "config/app.php";
         foreach ($config["libs"] as $lib) {
@@ -23,6 +27,10 @@ class App
         }
     }
 
+    /**
+     * @return void
+     * Подключение к Базе данных
+     */
     public static function db() {
         $config = require_once "config/db.php";
 

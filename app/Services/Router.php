@@ -5,8 +5,16 @@ namespace App\Services;
 class Router
 {
 
+    /**
+     * @var array
+     */
   private static $list = [];
 
+    /**
+     * @param $uri
+     * @param $page_name
+     * @return void
+     */
   public static function page($uri, $page_name)
   {
       self::$list[] = [
@@ -15,6 +23,9 @@ class Router
       ];
   }
 
+    /**
+     * @return void
+     */
   public static function enable()
   {
 
@@ -44,6 +55,15 @@ class Router
       }
 
 
+    /**
+     * @param $uri
+     * @param $class
+     * @param $method
+     * @param $formdata
+     * @param $files
+     * @return void
+     * Обработка POST запросов
+     */
   public static function post($uri, $class, $method, $formdata = false, $files = false) {
 
       self::$list[] = [
@@ -56,11 +76,21 @@ class Router
       ];
   }
 
+    /**
+     * @param $error
+     * @return void
+     * Переадресация на страницу ошибки
+     */
   public static function error($error) {
       require_once "views/errors/" . $error . ".php";
   }
 
-    public static function redirect($page) {
+    /**
+     * @param $page
+     * @return void
+     * Переадресация на переданную в качестве аргумента страницу
+     */
+   public static function redirect($page) {
         require_once "views/pages/" . $page . ".php" ;
         die();
     }

@@ -12,13 +12,19 @@
 
     if(!$_SESSION["user"]) {
         ?>
-        <a class="nav-item nav-link active" href="/login">Login</a>
-    <a class="nav-item nav-link active" href="/register">Register</a>
+        <a class="nav-item nav-link active" href="/MyOwnSystem/login">Login</a>
+    <a class="nav-item nav-link active" href="/MyOwnSystem/register">Register</a>
    <?php
     }
      ?>
+    <?php
+    if($_SESSION['user']) {
+    ?>
     <form class="mt-4" method="post" action="/MyOwnSystem/auth/logout">
     <button type="submit">Logout</button>
     </form>
+    <?php
+    }
+    ?>
 
 </nav>
