@@ -14,10 +14,10 @@ Page::part('navbar');
 ?>
 
 <div class="container">
-    <h2 class="mt-4">Sign up</h2>
+    <h2 class="mt-4">Регистрация</h2>
     <form class="mt-4" method="post" enctype="multipart/form-data" action="/MyOwnSystem/auth/register">
         <div class="form-group">
-            <label for="email">Email address</label>
+            <label for="email">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 
         </div>
@@ -27,29 +27,31 @@ Page::part('navbar');
 
         </div>
         <div class="form-group">
-            <label for="full_name">Full name</label>
+            <label for="full_name">Имя</label>
             <input type="text" class="form-control" id="full_name" placeholder="Enter email" name="full_name">
 
         </div>
         <div class="form-group">
-            <label for="full_name">User avatar</label>
+            <label for="full_name">Аватар пользователя</label>
             <input type="file" class="form-control" id="avatar" placeholder="Enter email" name="avatar">
 
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Пароль</label>
             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         <div class="form-group">
-            <label for="password_confirm">Password confirmation</label>
+            <label for="password_confirm">Подтверждение пароля</label>
             <input type="password" class="form-control" id="password_confirm" placeholder="Password" name="password_confirm">
         </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn btn-primary">Регистрация</button>
     </form>
+
+    <div>
+        <a href="/MyOwnSystem/login">Страница входа</a>
+    </div>
+
 </div>
 </body>
 </html>
