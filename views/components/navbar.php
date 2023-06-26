@@ -16,6 +16,9 @@
     <a class="nav-item nav-link active" href="/register">Register</a>
    <?php
     }
-    ?>
+     ?>
+    <form class="mt-4" method="post" action="/MyOwnSystem/auth/logout">
+    <button type="submit">Logout</button>
+    </form>
 
 </nav>

@@ -1,7 +1,6 @@
 <?php
 use App\Services\Page;
 
-var_dump($_SESSION['user']);
 if ($_SESSION['user']) {
     \App\Services\Router::redirect('profile');
 }
