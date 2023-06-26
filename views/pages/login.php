@@ -1,5 +1,9 @@
 <?php
 use App\Services\Page;
+
+if ($_SESSION['user']) {
+    \App\Services\Router::redirect('profile');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,15 +16,13 @@ Page::part('navbar')
 ?>
 <div class="container">
     <h2 class="mt-4">Sign in</h2>
-    <form class="mt-4">
+    <form class="mt-4" method="post" action="/auth/login">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <label for="email">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -8,6 +8,14 @@
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         </div>
     </div>
-    <a class="nav-item nav-link active" href="/login">Login</a>
+    <?php
+
+    if(!$_SESSION["user"]) {
+        ?>
+        <a class="nav-item nav-link active" href="/login">Login</a>
     <a class="nav-item nav-link active" href="/register">Register</a>
+   <?php
+    }
+    ?>
+
 </nav>

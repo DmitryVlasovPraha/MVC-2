@@ -33,7 +33,7 @@ class Router
               }
               die();
           } else {
-                  require_once "views/pages/" . $route['page'] . ".php";
+                  require_once "views/pages/" . $route["page"] . ".php";
                   die();
               }
           }
@@ -60,10 +60,10 @@ class Router
       require_once "views/errors/" . $error . ".php";
   }
 
-  public static function redirect($page) {
-      require_once "views/pages/" . $page . ".php" ;
-      die();
-  }
+    public static function redirect($page) {
+        require_once "views/pages/" . $page . ".php" ;
+        //die();
+    }
 
 
 }
