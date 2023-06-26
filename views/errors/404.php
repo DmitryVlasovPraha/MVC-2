@@ -1,3 +1,9 @@
 <?php
+use App\Services\Page;
 ?>
-<h1>NOT</h1>
+
+<?php
+Page::part('head');
+?>
+
+<h1>NOT a problemos</h1>
