@@ -12,7 +12,7 @@ class Auth
         $email = $data["email"];
         $password = $data["password"];
 
-        $user = R::findOne('users', 'email = ?', $email);
+        $user = R::findOne('users', 'email = ?', [$email]);
 
         if(!$user) {
             die("Пользователь не найден");
@@ -20,16 +20,19 @@ class Auth
 
         if(password_verify($password, $user->password)) {
             session_start();
-            $_SESSION["user_id"] = [
+            $_SESSION["user"] = [
                 "id" => $user->id,
                 "full_name" => $user->full_name,
                 "username" => $user->username,
+                "group" => $user->group,
                 "email" => $user->email,
                 "avatar" => $user->avatar
             ];
+
             Router::redirect('profile');
 
         } else {
+            Router::redirect('home');
             die('Error');
         }
 
@@ -47,10 +50,10 @@ class Auth
         $password = $data["password"];
         $password_confirm = $data["password_confirm"];
 
-       /* if($password !== $password_confirm){
+        if($password !== $password_confirm){
             Router::error('500');
             die();
-        }*/
+        }
 
         $avatar = $files["avatar"];
 
@@ -67,7 +70,7 @@ class Auth
              * 1 - user
              * 2 - admin
              */
-            //$user->group = 1;
+            $user->group = 1;
             $user->avatar = "/" . $path;
             $user->password = password_hash($password, PASSWORD_DEFAULT);
             R::store($user);

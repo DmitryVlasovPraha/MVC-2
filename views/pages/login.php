@@ -1,6 +1,7 @@
 <?php
 use App\Services\Page;
 
+var_dump($_SESSION['user']);
 if ($_SESSION['user']) {
     \App\Services\Router::redirect('profile');
 }
@@ -16,13 +17,13 @@ Page::part('navbar')
 ?>
 <div class="container">
     <h2 class="mt-4">Sign in</h2>
-    <form class="mt-4" method="post" action="/auth/login">
+    <form class="mt-4" method="post" action="/MyOwnSystem/auth/login">
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
