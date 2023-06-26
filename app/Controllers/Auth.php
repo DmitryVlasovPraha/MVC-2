@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\Router;
+use R;
 
 class Auth
 {
@@ -18,12 +19,25 @@ class Auth
         $password = $data["password"];
         $password_confirm = $data["password_confirm"];
 
+        if($password != $password_confirm){
+            Router::error('500');
+            die();
+        }
+
         $avatar = $files["avatar"];
 
         $fileName = time() . '_' . $avatar["name"];
 
-        if(move_uploaded_file($avatar["tmp_name"], "uploads/avatars/" . $fileName)) {
+        $path = "uploads/avatars/" . $fileName;
 
+        if(move_uploaded_file($avatar["tmp_name"], $path)) {
+            $user = R::dispense('users');
+            $user->email = $email;
+            $user->username = $username;
+            $user->full_name = $full_name;
+            $user->password = password_hash($password, PASSWORD_DEFAULT);
+            R::store($user);
+            Router::redirect('login');
         } else {
             Router::error('500');
         }
